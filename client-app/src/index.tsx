@@ -5,7 +5,8 @@ import './app/layout/styles.css';
 import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
 import { store, StoreContext } from './app/stores/store';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './features/home/HomePage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

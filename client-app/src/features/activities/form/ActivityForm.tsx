@@ -1,11 +1,12 @@
 import { observer } from "mobx-react-lite";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Button, Form, Segment } from "semantic-ui-react";
+import { Button, Container, Form, Segment } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponents";
 import { useStore } from "../../../app/stores/store";
 import { v4 as uuid } from 'uuid'
 import { useNavigate } from "react-router-dom";
+import NavBar from "../../../app/layout/navbar";
 
 export default observer (function ActivityForm() {
 
@@ -48,6 +49,9 @@ export default observer (function ActivityForm() {
     if(loadingInitial) return <LoadingComponent content='Loading Activity...' />
 
     return (
+        <Fragment>
+            <NavBar />
+            <Container style={{ marginTop: '7em' }}>
         <Segment clearing>
             <Form onSubmit={handleSubmit} autoComplete='off'>
                 <Form.Input placeholder='Title' value={activity.title} name='title' onChange={handleInputChange}/>
@@ -59,5 +63,8 @@ export default observer (function ActivityForm() {
                 <Button loading={loading} floated='right' positive type='submit' content='submit' />
                 <Button as={Link} to='/activities' floated='right' type='button' content='Cancel' />                   
             </Form>
-        </Segment>)
+        </Segment>
+        </Container>
+        </Fragment>
+        )
 })

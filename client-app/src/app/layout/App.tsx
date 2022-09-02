@@ -14,17 +14,14 @@ function App() {
 
     return (
       <Fragment>
-        <NavBar />
-        <Container style={{ marginTop: '7em' }}>
-          <Routes>
+        <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='activities' element={<ActivityDashboard />} />
           <Route path='/activities/:id' element={<ActivityDetails />} />
           <Route path='/createActivity' element={<ActivityForm />} />
-          <Route key={location.key} path='/manage/:id' element={<ActivityForm />} />
+          <Route key={location.key} path='/manage/:id' element={<ActivityForm />} />  
           </Routes>
-        </Container>
-      </Fragment>
+          </Fragment>          
     );
   }
 

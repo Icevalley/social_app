@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
-import React, { useEffect } from "react";
-import { Grid } from "semantic-ui-react";
+import React, { Fragment, useEffect } from "react";
+import { Container, Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponents";
+import NavBar from "../../../app/layout/navbar";
 import { useStore } from "../../../app/stores/store";
 import ActivityFilters from "./ActivityFilters";
 import ActivityList from "./ActivityList";
@@ -17,6 +18,9 @@ export default observer (function ActivityDashboard() {
       if (activityStore.loadingInitial) return <LoadingComponent content='Loading App' />
 
     return (
+      <Fragment>
+      <NavBar />
+      <Container style={{ marginTop: '7em' }}>
         <Grid>
         <Grid.Column width='10'>
             <ActivityList />
@@ -24,6 +28,8 @@ export default observer (function ActivityDashboard() {
         <Grid.Column width='6'>
           <ActivityFilters />
         </Grid.Column>
-        </Grid>)
+        </Grid>
+        </Container>
+        </Fragment>)
 
 })

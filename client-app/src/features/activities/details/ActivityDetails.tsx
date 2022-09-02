@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Grid } from "semantic-ui-react";
+import { Container, Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponents";
+import Navbar from "../../../app/layout/navbar";
 import { useStore } from "../../../app/stores/store";
 import ActivityDetailedChat from "./ActivityDetailedChat";
 import ActivityDetailedHeader from "./ActivityDetailedHeader";
@@ -22,6 +23,9 @@ export default observer (function ActivityDetails() {
   if (loadingInitial || !activity) return <LoadingComponent/>;
 
     return (
+      <Fragment>
+        <Navbar />
+        <Container style={{ marginTop: '7em'}}>
        <Grid>
         <Grid.Column width={10}>
         <ActivityDetailedHeader activity={activity} />
@@ -32,4 +36,6 @@ export default observer (function ActivityDetails() {
           <ActivityDetailedSidebar />
         </Grid.Column>
        </Grid>
+       </Container>
+       </Fragment>
 )})
